@@ -16,10 +16,13 @@ public class Main extends Application {
 
     @Override
     public void start(Stage loginStage) throws Exception{
+
+        // get image for app icon
         Image image = new Image("./main/resources/images/SlimeFighterTransparent.png");
 
         loginStage.getIcons().add(image);
 
+        // use login.fxml
         Parent root = FXMLLoader.load(getClass().getResource("../resources/fxml/login.fxml"));
 
         loginStage.setTitle("Slime Fighter");

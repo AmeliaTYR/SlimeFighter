@@ -1,6 +1,5 @@
 package main.java;
 
-
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,14 +14,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.ColorPicker;
-import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import main.java.constants.SQLiteDB;
 
-//import static main.java.constants.SQLiteDB.jdbcURL;
 
 /**
  * FXML Controller class
@@ -51,12 +47,6 @@ public class FXMLController implements Initializable {
     @FXML
     private Tab newUserTab;
 
-    @FXML
-    private ColorPicker userColor;
-
-    @FXML
-    private Label errorMessageLabelLogin;
-
     /**
      * Initializes the controller class.
      */
@@ -65,12 +55,22 @@ public class FXMLController implements Initializable {
 
     }
 
+    /**
+     * Handle checks and login for create new user
+     * @param event
+     */
     @FXML
     protected void handleCreateUserButtonAction(ActionEvent event) {
-        System.out.println("Create new user:");
         String username = newUsername.getText();
         String password = newPassword.getText();
-        System.out.println(username);
+
+        if (username.isBlank()) {
+            usernameFieldBlankAlert();
+            return;
+        }
+
+        // Todo: add password check
+
 
         try {
             Connection connection = DriverManager.getConnection(SQLiteDB.jdbcURL);
@@ -83,10 +83,19 @@ public class FXMLController implements Initializable {
                 ResultSet result = statement.executeQuery(sql);
 
                 if (result.next()){
-                    usernameExistsAlert();
+                    usernameExistsAlert(username);
 
                 } else {
                     // SQLite query to create new user with password
+                    Statement newUserStatement = connection.createStatement();
+                    String newUserSql = "INSERT INTO players (userName, passWord) Values('"
+                            + username + "', '" + password + "')";
+                    newUserStatement.executeUpdate(newUserSql);
+
+                    // set main user
+                    Main.currentUser.setUsername(username);
+
+                    // go to starting page
 
                 }
 
@@ -97,31 +106,22 @@ public class FXMLController implements Initializable {
             e.printStackTrace();
         }
 
-        // check if username already exists
-        if (username.equals("ames")) {
-            usernameExistsAlert();
-
-        } else {
-            // else procceed to create new user
-
-            // temporary user creation algo
-            Main.currentUser.setUsername(username);
-
-            // change scene to current point in game
-
-
-
-        }
-
-
     }
 
+    /**
+     * Handle checks and login when user logs in
+     * @param event
+     */
     @FXML
     protected void handleUserLoginButtonAction(ActionEvent event) {
-        System.out.println("User login");
-
         String username = existingUsername.getText();
-        System.out.println(username);
+
+        if (username.isBlank()) {
+            usernameFieldBlankAlert();
+            return;
+        }
+
+        // Todo: add password check
 
         // Connect to the database
         try {
@@ -138,6 +138,7 @@ public class FXMLController implements Initializable {
                     // Check if password match
 
                     // load user profile
+                    Main.currentUser.setUsername(username);
 
                     /////////////////// Todo: replace this later
                     String username2 = result.getString("userName");
@@ -147,7 +148,7 @@ public class FXMLController implements Initializable {
                     ///////////////////
 
                 } else {
-                    usernameNonExistentAlert();
+                    usernameNonExistentAlert(username);
                 }
 
             }
@@ -163,7 +164,7 @@ public class FXMLController implements Initializable {
     /**
      *  Alert user if username already exists
      */
-    public void usernameExistsAlert(){
+    public void usernameExistsAlert(String username){
 
         Alert alert = new Alert(Alert.AlertType.WARNING,"", ButtonType.YES, ButtonType.NO);  //new alert object
         alert.setTitle("Warning!");  //warning box title
@@ -175,6 +176,7 @@ public class FXMLController implements Initializable {
         if (result.get() == ButtonType.YES){
             System.out.println("user chose YES");
             authTabPane.getSelectionModel().select(loginTab);
+            existingUsername.setText(username);
         } else {
             System.out.println("user chose NO or closed the dialog");
 
@@ -185,23 +187,34 @@ public class FXMLController implements Initializable {
     /**
      *  Alert user if username does not exist on login
      */
-    public void usernameNonExistentAlert(){
+    public void usernameNonExistentAlert(String username){
 
         Alert alert = new Alert(Alert.AlertType.WARNING,"", ButtonType.YES, ButtonType.NO);  //new alert object
         alert.setTitle("Warning!");  //warning box title
         alert.setHeaderText("Username not found!");// Header
-        alert.setContentText("Username does not exist. Create new user instead?"); //Discription of warning
+        alert.setContentText("Username does not exist. Create new user instead?"); //Description of warning
         alert.getDialogPane().setPrefSize(300, 150); //sets size of alert box
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.YES){
             System.out.println("user chose YES");
             authTabPane.getSelectionModel().select(newUserTab);
-
+            newUsername.setText(username);
         } else {
             System.out.println("user chose NO or closed the dialog");
 
         }
 
+    }
+
+    /**
+     * Show alert when username field is blank
+     */
+    private void usernameFieldBlankAlert() {
+        Alert alert = new Alert(Alert.AlertType.NONE);
+        alert.setAlertType(Alert.AlertType.INFORMATION);
+        alert.setHeaderText("Username field empty");// Header
+        alert.setContentText("Please enter a username"); //Description of warning
+        alert.show();
     }
 }

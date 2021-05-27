@@ -21,7 +21,6 @@
                               <Font size="25.0" />
                            </font>
                         </Label>
-                        <Label id="errorMessageLabelLogin" fx:id="errorMessageLabelLogin" />
                         <GridPane alignment="CENTER" prefHeight="119.0" prefWidth="230.0">
                            <children>
                               <Label text="Name" />
@@ -59,7 +58,6 @@
                               <Font size="25.0" />
                            </font>
                         </Label>
-                        <Label id="errorMessageLabelCreate" fx:id="errorMessageLabelCreate" />
                         <GridPane alignment="CENTER" prefHeight="163.0" prefWidth="200.0">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="0.0" prefWidth="64.0" />
@@ -68,13 +66,10 @@
                           <rowConstraints>
                             <RowConstraints maxHeight="73.0" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES" />
                             <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="62.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="47.0" minHeight="0.0" prefHeight="43.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
                               <Label text="Name" />
                               <Label text="Password" GridPane.rowIndex="1" />
-                              <Label text="Color" GridPane.rowIndex="2" />
-                              <ColorPicker id="userColor" fx:id="userColor" maxWidth="1.7976931348623157E308" prefHeight="31.0" prefWidth="120.0" promptText="Choose a color" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                               <TextField id="newUsername" fx:id="newUsername" promptText="Your name here" GridPane.columnIndex="1" />
                               <TextField id="newPassword" fx:id="newPassword" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                            </children>
