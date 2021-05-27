@@ -16,14 +16,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage loginStage) throws Exception{
-//        Image image = new Image(new File("SlimeFighter.ico").toURI().toString());
-        Image image = new Image("./main/resources/images/SlimeFighter.jpg");
+        Image image = new Image("./main/resources/images/SlimeFighterTransparent.png");
 
         loginStage.getIcons().add(image);
-
-        for (int i=0; i<100; i++){
-            System.out.println("hello " + i);
-        }
 
         Parent root = FXMLLoader.load(getClass().getResource("../resources/fxml/login.fxml"));
 

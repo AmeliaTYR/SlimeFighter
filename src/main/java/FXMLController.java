@@ -1,23 +1,28 @@
 package main.java;
 
 
-import java.awt.*;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import javafx.animation.RotateTransition;
+
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Point3D;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ColorPicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
-import javafx.scene.shape.Arc;
-import javafx.scene.text.Text;
-import javafx.util.Duration;
+import main.java.constants.SQLiteDB;
+
+//import static main.java.constants.SQLiteDB.jdbcURL;
 
 /**
  * FXML Controller class
@@ -29,10 +34,28 @@ public class FXMLController implements Initializable {
     private TextField newUsername;
 
     @FXML
+    private TextField newPassword;
+
+    @FXML
     private TextField existingUsername;
 
     @FXML
+    private TextField existingUserPassword;
+
+    @FXML
+    private TabPane authTabPane;
+
+    @FXML
+    private Tab loginTab;
+
+    @FXML
+    private Tab newUserTab;
+
+    @FXML
     private ColorPicker userColor;
+
+    @FXML
+    private Label errorMessageLabelLogin;
 
     /**
      * Initializes the controller class.
@@ -46,7 +69,33 @@ public class FXMLController implements Initializable {
     protected void handleCreateUserButtonAction(ActionEvent event) {
         System.out.println("Create new user:");
         String username = newUsername.getText();
+        String password = newPassword.getText();
         System.out.println(username);
+
+        try {
+            Connection connection = DriverManager.getConnection(SQLiteDB.jdbcURL);
+            String sql = "SELECT * FROM players WHERE userName = '";
+            if (!username.isBlank()) {
+                sql = sql + username + "'";
+
+                System.out.println(sql);
+                Statement statement = connection.createStatement();
+                ResultSet result = statement.executeQuery(sql);
+
+                if (result.next()){
+                    usernameExistsAlert();
+
+                } else {
+                    // SQLite query to create new user with password
+
+                }
+
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error connecting to SQLite database");
+            e.printStackTrace();
+        }
 
         // check if username already exists
         if (username.equals("ames")) {
@@ -74,15 +123,39 @@ public class FXMLController implements Initializable {
         String username = existingUsername.getText();
         System.out.println(username);
 
-        // check if user name in list of users
+        // Connect to the database
+        try {
+            Connection connection = DriverManager.getConnection(SQLiteDB.jdbcURL);
+            String sql = "SELECT * FROM players WHERE userName = '";
+            if (!username.isBlank()) {
+                sql = sql + username + "'";
 
+                System.out.println(sql);
+                Statement statement = connection.createStatement();
+                ResultSet result = statement.executeQuery(sql);
 
-        // if in then load user profile
-        // temporary user load
+                if (result.next()){
+                    // Check if password match
 
-        // else have alert that user does not exist, prompt to create new user
+                    // load user profile
 
-        // other check for password validation
+                    /////////////////// Todo: replace this later
+                    String username2 = result.getString("userName");
+                    int hp = result.getInt("hp");
+
+                    System.out.println("Username: " + username2 + ", hp: " + hp);
+                    ///////////////////
+
+                } else {
+                    usernameNonExistentAlert();
+                }
+
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error connecting to SQLite database");
+            e.printStackTrace();
+        }
 
 
     }
@@ -95,12 +168,13 @@ public class FXMLController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.WARNING,"", ButtonType.YES, ButtonType.NO);  //new alert object
         alert.setTitle("Warning!");  //warning box title
         alert.setHeaderText("Username taken!");// Header
-        alert.setContentText("Username already exists. Login instead?"); //Discription of warning
+        alert.setContentText("Username already exists. Login instead?"); //Description of warning
         alert.getDialogPane().setPrefSize(300, 150); //sets size of alert box
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.YES){
             System.out.println("user chose YES");
+            authTabPane.getSelectionModel().select(loginTab);
         } else {
             System.out.println("user chose NO or closed the dialog");
 
@@ -111,7 +185,7 @@ public class FXMLController implements Initializable {
     /**
      *  Alert user if username does not exist on login
      */
-    public void usernameNonExistantAlert(){
+    public void usernameNonExistentAlert(){
 
         Alert alert = new Alert(Alert.AlertType.WARNING,"", ButtonType.YES, ButtonType.NO);  //new alert object
         alert.setTitle("Warning!");  //warning box title
@@ -122,6 +196,8 @@ public class FXMLController implements Initializable {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.YES){
             System.out.println("user chose YES");
+            authTabPane.getSelectionModel().select(newUserTab);
+
         } else {
             System.out.println("user chose NO or closed the dialog");
 
