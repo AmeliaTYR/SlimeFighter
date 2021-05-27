@@ -1,23 +1,8 @@
-package main.java;
+package main.java.controllers;
 
-import java.io.IOException;
-import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.EventObject;
-import java.util.Optional;
-import java.util.ResourceBundle;
-
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -27,9 +12,18 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import main.java.Main;
 import main.java.constants.SQLiteDB;
 
-import javax.net.ssl.SSLContext;
+import java.io.IOException;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Optional;
+import java.util.ResourceBundle;
 
 
 /**
@@ -49,6 +43,7 @@ public class loginFXMLController implements Initializable {
 
     @FXML
     private TextField existingUserPassword;
+    // Todo: Add password checks
 
     @FXML
     private TabPane authTabPane;
@@ -72,10 +67,9 @@ public class loginFXMLController implements Initializable {
 
     /**
      * Handle checks and login for create new user
-     * @param event
      */
     @FXML
-    protected void handleCreateUserButtonAction(ActionEvent event) {
+    protected void handleCreateUserButtonAction() {
         String username = newUsername.getText();
         String password = newPassword.getText();
 
@@ -131,10 +125,9 @@ public class loginFXMLController implements Initializable {
 
     /**
      * Handle checks and login when user logs in
-     * @param event
      */
     @FXML
-    protected void handleUserLoginButtonAction(ActionEvent event) {
+    protected void handleUserLoginButtonAction() {
         String username = existingUsername.getText();
 
         if (username.isBlank()) {
@@ -160,16 +153,19 @@ public class loginFXMLController implements Initializable {
 
                     // load user profile
                     Main.currentUser.setUsername(username);
+                    Main.currentUser.setHp(result.getInt("hp"));
+                    Main.currentUser.setMp(result.getInt("mp"));
+                    Main.currentUser.setExp(result.getInt("Exp"));
+                    Main.currentUser.setLevel(result.getInt("level"));
+                    Main.currentUser.setCoins(result.getInt("coins"));
+                    Main.currentUser.setLocation(result.getString("location"));
+                    Main.currentUser.setAtk(result.getInt("atk"));
+                    Main.currentUser.setDef(result.getInt("def"));
 
-                    /////////////////// Todo: replace this later
-                    String username2 = result.getString("userName");
-                    int hp = result.getInt("hp");
 
-                    System.out.println("Username: " + username2 + ", hp: " + hp);
-                    ///////////////////
+                    System.out.println("Username: " + Main.currentUser.getUsername() + ", atk: " + Main.currentUser.getAtk());
 
-                    // go to starting page
-
+                    // go to userPage
                     System.out.println("changing stage");
 
                     // change stage
@@ -177,7 +173,7 @@ public class loginFXMLController implements Initializable {
 
                     // open inventory stage
                     // use login.fxml
-                    Parent root = FXMLLoader.load(getClass().getResource("../resources/fxml/userPage.fxml"));
+                    Parent root = FXMLLoader.load(getClass().getResource("../../resources/fxml/userPage.fxml"));
 
                     stage.setTitle("Slime Fighter");
                     stage.setScene(new Scene(root, 600, 400));
