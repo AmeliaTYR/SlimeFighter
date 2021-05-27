@@ -15,20 +15,20 @@ public class Main extends Application {
     public static Player currentUser = new Player();
 
     @Override
-    public void start(Stage loginStage) throws Exception{
+    public void start(Stage stage) throws Exception{
 
         // get image for app icon
         Image image = new Image("./main/resources/images/SlimeFighterTransparent.png");
 
-        loginStage.getIcons().add(image);
+        stage.getIcons().add(image);
 
         // use login.fxml
         Parent root = FXMLLoader.load(getClass().getResource("../resources/fxml/login.fxml"));
 
-        loginStage.setTitle("Slime Fighter");
-        loginStage.setScene(new Scene(root, 600, 400));
+        stage.setTitle("Slime Fighter");
+        stage.setScene(new Scene(root, 600, 400));
 
-        loginStage.show();
+        stage.show();
 
     }
 

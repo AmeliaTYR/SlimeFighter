@@ -1,5 +1,6 @@
 package main.java;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,8 +15,11 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -32,7 +36,7 @@ import javax.net.ssl.SSLContext;
  * FXML Controller class
  * @author Villan
  */
-public class FXMLController implements Initializable {
+public class loginFXMLController implements Initializable {
 
     @FXML
     private TextField newUsername;
@@ -166,13 +170,17 @@ public class FXMLController implements Initializable {
 
                     // go to starting page
 
-                    System.out.println("closing stage");
+                    System.out.println("changing stage");
 
                     // change stage
                     Stage stage = (Stage) userLoginButton.getScene().getWindow();
-                    stage.close();
 
                     // open inventory stage
+                    // use login.fxml
+                    Parent root = FXMLLoader.load(getClass().getResource("../resources/fxml/userPage.fxml"));
+
+                    stage.setTitle("Slime Fighter");
+                    stage.setScene(new Scene(root, 600, 400));
 
                 } else {
                     usernameNonExistentAlert(username);
@@ -182,6 +190,9 @@ public class FXMLController implements Initializable {
 
         } catch (SQLException e) {
             System.out.println("Error connecting to SQLite database");
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("Cannot load userPage.fxml");
             e.printStackTrace();
         }
     }
