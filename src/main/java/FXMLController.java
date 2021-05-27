@@ -6,18 +6,26 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.EventObject;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import main.java.constants.SQLiteDB;
+
+import javax.net.ssl.SSLContext;
 
 
 /**
@@ -46,6 +54,9 @@ public class FXMLController implements Initializable {
 
     @FXML
     private Tab newUserTab;
+
+    @FXML
+    private Button userLoginButton;
 
     /**
      * Initializes the controller class.
@@ -97,6 +108,12 @@ public class FXMLController implements Initializable {
 
                     // go to starting page
 
+                    System.out.println("closing stage");
+
+                    // change stage
+                    Stage stage = (Stage) userLoginButton.getScene().getWindow();
+                    stage.close();
+
                 }
 
             }
@@ -147,6 +164,16 @@ public class FXMLController implements Initializable {
                     System.out.println("Username: " + username2 + ", hp: " + hp);
                     ///////////////////
 
+                    // go to starting page
+
+                    System.out.println("closing stage");
+
+                    // change stage
+                    Stage stage = (Stage) userLoginButton.getScene().getWindow();
+                    stage.close();
+
+                    // open inventory stage
+
                 } else {
                     usernameNonExistentAlert(username);
                 }
@@ -157,8 +184,6 @@ public class FXMLController implements Initializable {
             System.out.println("Error connecting to SQLite database");
             e.printStackTrace();
         }
-
-
     }
 
     /**
@@ -218,3 +243,4 @@ public class FXMLController implements Initializable {
         alert.show();
     }
 }
+
