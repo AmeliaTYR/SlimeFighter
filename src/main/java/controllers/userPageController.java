@@ -18,8 +18,6 @@ public class userPageController implements Initializable {
     @FXML
     private Label coinsNumLabel;
 
-    @FXML
-    private Label locationLabel;
 
     @FXML
     private Label usernameProfileDisplay;
@@ -29,9 +27,6 @@ public class userPageController implements Initializable {
 
     @FXML
     private Label mpNumLabel;
-
-    @FXML
-    private Label atkNumLabel;
 
     @FXML
     private Label defNumLabel;
@@ -45,10 +40,8 @@ public class userPageController implements Initializable {
         levelNumLabel.setText(Integer.toString(Main.currentUser.getLevel()));
         expNumLabel.setText(Integer.toString(Main.currentUser.getExp()));
         coinsNumLabel.setText(Integer.toString(Main.currentUser.getCoins()));
-        locationLabel.setText("Location: " + Main.currentUser.getLocation());
         hpNumLabel.setText(Integer.toString(Main.currentUser.getHp()));
         mpNumLabel.setText(Integer.toString(Main.currentUser.getMp()));
-        atkNumLabel.setText(Integer.toString(Main.currentUser.getAtk()));
         defNumLabel.setText(Integer.toString(Main.currentUser.getDef()));
     }
 

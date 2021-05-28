@@ -158,8 +158,6 @@ public class loginFXMLController implements Initializable {
                     Main.currentUser.setExp(result.getInt("Exp"));
                     Main.currentUser.setLevel(result.getInt("level"));
                     Main.currentUser.setCoins(result.getInt("coins"));
-                    Main.currentUser.setLocation(result.getString("location"));
-                    Main.currentUser.setAtk(result.getInt("atk"));
                     Main.currentUser.setDef(result.getInt("def"));
 
 
