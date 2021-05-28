@@ -17,8 +17,7 @@ public class userPageController implements Initializable {
 
     @FXML
     private Label coinsNumLabel;
-
-
+    
     @FXML
     private Label usernameProfileDisplay;
 
