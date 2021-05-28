@@ -24,7 +24,7 @@
                       <RowConstraints maxHeight="75.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="rtnToGameBtn" mnemonicParsing="false" text="Return to Game" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Button fx:id="rtnToGameBtn" mnemonicParsing="false" onAction="#handleResumeGameButtonAction" text="Return to Game" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <GridPane gridLinesVisible="true" maxHeight="100.0" maxWidth="200.0" GridPane.rowIndex="1">
                           <columnConstraints>
                             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="306.0" minWidth="10.0" prefWidth="195.0" />
