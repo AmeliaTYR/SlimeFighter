@@ -10,8 +10,19 @@ public class GameLogic {
 
 
     public GameLogic(){
-
         // start first scene
+
+        // todo: save user basic data (eg level, exp, coins etc)
+
+        // todo: save user statusEffects data
+
+        // todo: save user inventory
+
+        // todo: save user storage
+
+        // todo:  save user gear
+
+        // todo: create alert to show that save was complete
     }
 
 }

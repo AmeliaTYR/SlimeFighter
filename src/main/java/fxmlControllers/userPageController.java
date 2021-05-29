@@ -2,13 +2,16 @@ package main.java.fxmlControllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import main.java.Main;
 import main.java.swing.GameLogic;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class userPageController implements Initializable {
@@ -70,18 +73,46 @@ public class userPageController implements Initializable {
     }
 
     @FXML
-    protected void handleSaveButtonAction() {
-        // todo: save user basic data (eg level, exp, coins etc)
+    protected void handleDeleteProfileButtonAction() {
+        // show delete confirmation alert
 
-        // todo: save user statusEffects data
 
-        // todo: save user inventory
+    }
 
-        // todo: save user storage
 
-        // todo:  save user gear
+    /**
+     *  delete confirmation alert
+     */
+    public void usernameExistsAlert(String username){
 
-        // todo: create alert to show that save was complete
+        Alert alert = new Alert(Alert.AlertType.WARNING,"", ButtonType.YES, ButtonType.NO);  //new alert object
+        alert.setTitle("Warning!");  //warning box title
+        alert.setHeaderText("Delete profile?");// Header
+        alert.setContentText("This action cannot be undone!"); //Description of warning
+        alert.getDialogPane().setPrefSize(300, 150); //sets size of alert box
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.YES){
+            System.out.println("user chose to delete profile");
+            // sql query to delete all user data
+            // todo: delete user basic data (eg level, exp, coins etc)
+
+            // todo: delete user statusEffects data
+
+            // todo: delete user inventory
+
+            // todo: delete user storage
+
+            // todo: delete user gear
+
+            // todo: create alert to show that delete was complete (close app on alert close)
+
+            System.out.println("Deletion complete");
+
+        } else {
+            System.out.println("user chose cancel deletion. phew");
+
+        }
 
     }
 
