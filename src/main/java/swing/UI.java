@@ -1,17 +1,21 @@
 package main.java.swing;
 
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-
 import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+
+import java.awt.Color;
+import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
+
 import java.io.File;
 import java.io.IOException;
-import java.util.Optional;
 
 public class UI {
 

@@ -1,5 +1,9 @@
 package main.java.swing;
 
+import main.java.Main;
+import main.java.items.Inventory;
+import main.java.items.StatusEffectList;
+
 import javax.swing.*;
 import java.util.Optional;
 
@@ -25,6 +29,7 @@ public class ObjectClicks {
                     // restore currentUser hp and mp to max based on level
                     // clear stats array
                     System.out.println("user choose to rest");
+                    StatusEffectList.restClearAllStats();
                 } else {
                     System.out.println("user did not rest");
                 }
@@ -41,6 +46,20 @@ public class ObjectClicks {
             }
             case "diary": {
                 System.out.println("go to in game stats page");
+                // todo: save user basic data (eg level, exp, coins etc) to currentUser
+                Main.currentUser.getPlayerDataFromDB();
+
+                // todo: save user statusEffects data
+                StatusEffectList.getAllEffectsFromSaveData();
+
+                // todo: save user inventory
+                Inventory.getAllItemsFromDB();
+
+                // todo: save user storage
+
+                // todo:  save user gear
+
+                // todo: create alert to show that save was complete
                 break;
             }
             case "go out": {

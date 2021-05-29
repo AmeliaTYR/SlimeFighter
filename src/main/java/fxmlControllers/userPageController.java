@@ -17,35 +17,44 @@ import java.util.ResourceBundle;
 public class userPageController implements Initializable {
     public GameLogic gameLogic;
 
-    @FXML
-    private Label levelNumLabel;
-
-    @FXML
-    private Label expNumLabel;
-
-    @FXML
-    private Label coinsNumLabel;
-    
+    /**
+     * Labels in userPage
+     */
     @FXML
     private Label usernameProfileDisplay;
-
+    @FXML
+    private Label levelNumLabel;
+    @FXML
+    private Label expNumLabel;
+    @FXML
+    private Label coinsNumLabel;
+    @FXML
+    private Label flyingAtkLabel;
+    @FXML
+    private Label shieldingAtkLabel;
+    @FXML
+    private Label phasingAtkLabel;
     @FXML
     private Label hpNumLabel;
-
     @FXML
     private Label mpNumLabel;
-
     @FXML
     private Label defNumLabel;
 
     @FXML
     private Button rtnToGameBtn;
+    @FXML
+    private Button helpButton;
+    @FXML
+    private Button aboutBtn;
+    @FXML
+    private Button deleteBtn;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Todo: add change user Profile pic code
 
-        // get user data
+        // todo: fix this part get all user data for page
         usernameProfileDisplay.setText(Main.currentUser.getUsername());
         levelNumLabel.setText(Integer.toString(Main.currentUser.getLevel()));
         expNumLabel.setText(Integer.toString(Main.currentUser.getExp()));
@@ -54,11 +63,6 @@ public class userPageController implements Initializable {
         mpNumLabel.setText(Integer.toString(Main.currentUser.getMp()));
         defNumLabel.setText(Integer.toString(Main.currentUser.getDef()));
 
-        // todo: load user stat data
-
-        // todo: load user gear, inventory and storage into array lists
-            // make query
-            // convert for item in list put in to array list using the class
     }
 
 
@@ -72,18 +76,11 @@ public class userPageController implements Initializable {
 
     }
 
-    @FXML
-    protected void handleDeleteProfileButtonAction() {
-        // show delete confirmation alert
-
-
-    }
-
-
     /**
      *  delete confirmation alert
      */
-    public void usernameExistsAlert(String username){
+    @FXML
+    public void handleDeleteProfileButtonAction(String username){
 
         Alert alert = new Alert(Alert.AlertType.WARNING,"", ButtonType.YES, ButtonType.NO);  //new alert object
         alert.setTitle("Warning!");  //warning box title

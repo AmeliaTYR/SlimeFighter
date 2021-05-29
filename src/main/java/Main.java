@@ -8,8 +8,6 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import main.java.characters.Player;
 
-import java.io.File;
-
 public class Main extends Application {
 
     public static Player currentUser = new Player();

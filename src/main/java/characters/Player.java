@@ -2,18 +2,64 @@ package main.java.characters;
 
 public class Player {
     private String username;
-    private int hp;
-    private int mp;
-    private int maxHp;
-    private int maxMp;
-    private int exp;
-    private int level;
-    private int coins;
-    private int flyingAtk;
-    private int shieldingAtk;
-    private int phasingAtk;
-    private int def;
 
+    private int hp = 10;
+    private int mp = 6;
+    // max hp is 10 + (level - 1) * 3
+    private int maxHp = 10;
+    // max mp is 6 + (level - 1) * 2
+    private int maxMp = 6;
+
+    private int level = 1;
+    private int exp = 0;
+    private int coins = 0;
+
+    private int flyingAtk = 1;
+    private int shieldingAtk = 1;
+    private int phasingAtk = 1;
+    private int def = 7;
+
+    // limit is 10 + level
+    private int inventoryLimit = 10;
+
+    public Player() {
+
+    }
+
+    public void setPlayerData(String username,
+                              int hp, int mp,
+                              int level, int exp, int coins,
+                              int flyingAtk, int shieldingAtk, int phasingAtk,
+                              int def) {
+        this.username = username;
+        this.hp = hp;
+        this.mp = mp;
+        this.level = level;
+        this.exp = exp;
+        this.coins = coins;
+        this.flyingAtk = flyingAtk;
+        this.shieldingAtk = shieldingAtk;
+        this.phasingAtk = phasingAtk;
+        this.def = def;
+        this.inventoryLimit = 10 + this.level;
+    }
+
+    public void savePlayerDataToDB(){
+        // sql query to update player info
+
+    }
+
+    /**
+     * Getters and setters below
+     */
+
+    public int getInventoryLimit() {
+        return inventoryLimit;
+    }
+
+    public void setInventoryLimit(int inventoryLimit) {
+        this.inventoryLimit = inventoryLimit;
+    }
 
     public String getUsername() {
         return username;

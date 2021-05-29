@@ -31,6 +31,7 @@ import java.util.ResourceBundle;
  * @author Villan
  */
 public class loginFXMLController implements Initializable {
+    public boolean newUser = true;
 
     @FXML
     private TextField newUsername;
@@ -151,20 +152,25 @@ public class loginFXMLController implements Initializable {
                 if (result.next()){
                     // Check if password match
 
-                    // load user profile
-                    Main.currentUser.setUsername(username);
-                    Main.currentUser.setHp(result.getInt("hp"));
-                    Main.currentUser.setMp(result.getInt("mp"));
-                    Main.currentUser.setExp(result.getInt("Exp"));
-                    Main.currentUser.setLevel(result.getInt("level"));
-                    Main.currentUser.setCoins(result.getInt("coins"));
-                    Main.currentUser.setDef(result.getInt("def"));
+                    // todo: load user profile into game
+                    Main.currentUser.setPlayerData(username,
+                            result.getInt("hp"),
+                            result.getInt("mp"),
+                            result.getInt("level"),
+                            result.getInt("Exp"),
+                            result.getInt("coins"),
+                            result.getInt("flyingAtk"),
+                            result.getInt("shieldingAtk"),
+                            result.getInt("phasingAtk"),
+                            result.getInt("def")
+                            );
 
 
-                    System.out.println("Username: " + Main.currentUser.getUsername() + ", def: " + Main.currentUser.getDef());
+                    System.out.println("Username: " + Main.currentUser.getUsername() +
+                            ", level: " + Main.currentUser.getLevel());
 
                     // go to userPage
-                    System.out.println("changing stage");
+                    System.out.println("changing stage to userPage");
 
                     // change stage
                     Stage stage = (Stage) userLoginButton.getScene().getWindow();
