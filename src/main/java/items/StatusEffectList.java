@@ -24,7 +24,7 @@ public class StatusEffectList {
         try {
             // make the sql query
             Connection connection = DriverManager.getConnection(jdbcURL);
-            String sql = "SELECT * FROM playerStatusEffects WHERE userName = '" + Main.currentUser.getUsername() + "'";
+            String sql = "SELECT rowid, * FROM playerStatusEffects WHERE userName = '" + Main.currentUser.getUsername() + "'";
             System.out.println(sql);
             Statement statement = connection.createStatement();
             ResultSet statsResultset = statement.executeQuery(sql);

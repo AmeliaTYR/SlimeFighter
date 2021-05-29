@@ -1,11 +1,8 @@
 package main.java.swing;
 
-import main.java.Main;
-import main.java.items.Inventory;
 import main.java.items.StatusEffectList;
 
-import javax.swing.*;
-import java.util.Optional;
+import javax.swing.JOptionPane;
 
 public class ObjectClicks {
 
@@ -44,22 +41,25 @@ public class ObjectClicks {
                 System.out.println("Go to guidebook");
                 break;
             }
-            case "diary": {
+            case "journal": {
                 System.out.println("go to in game stats page");
                 // todo: save user basic data (eg level, exp, coins etc) to currentUser
-                Main.currentUser.getPlayerDataFromDB();
+
 
                 // todo: save user statusEffects data
-                StatusEffectList.getAllEffectsFromSaveData();
+
 
                 // todo: save user inventory
-                Inventory.getAllItemsFromDB();
+
 
                 // todo: save user storage
 
+
                 // todo:  save user gear
 
+
                 // todo: create alert to show that save was complete
+
                 break;
             }
             case "go out": {
@@ -74,9 +74,13 @@ public class ObjectClicks {
                 System.out.println("open inventory");
                 break;
             }
+            case "armour": {
+                System.out.println("change armour");
+                break;
+            }
 
             // town items (double value when buy)
-            case "armour": {
+            case "armoury": {
                 // buy armour only
                 // open shop interface for armour
                 System.out.println("go to armour shop");
@@ -104,7 +108,6 @@ public class ObjectClicks {
                 System.out.println("go back home");
                 gameLogic.scenesController.changeToHomeScene();
                 System.out.println("scene changed to home");
-
                 break;
             }
 

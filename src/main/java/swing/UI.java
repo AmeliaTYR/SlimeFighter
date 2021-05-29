@@ -24,12 +24,14 @@ public class UI {
     JFrame frame;
 
     /** create an array of panels for the different scenes
-     *  [0]home, [1]town, [2]paths, [3]travelling, [4]combat, [5]loot, [6]inventory, [7]story
+     *  [0]home, [1]town, [2]paths, [3]travelling,
+     *  [4]combat, [5]loot, [6]inventory, [7]conversation,
+     *  [8]bookPg1, [9]bookPg2, [10]bookPg3
      */
-    public JPanel panels[] = new JPanel[8];
+    public JPanel panels[] = new JPanel[11];
 
     // create an array of background labels for each of the scenes
-    public JLabel backgrounds[] = new JLabel[8];
+    public JLabel backgrounds[] = new JLabel[11];
 
 
     public UI(GameLogic gameLogic) {
@@ -143,22 +145,24 @@ public class UI {
 
     }
 
-    // [0]home, [1]town, [2]paths, [3]travelling, [4]combat, [5]loot, [6]inventory, [7]story
+
     public void createHomeScene() {
         renderBg(0, "src/main/resources/images/roomAssets/roomBg.png");
 
-        renderObject(0, 600, 400,100,100,
+        renderObject(0, 590, 400,110,90,
                 "src/main/resources/images/roomAssets/chest.png", "storage", "storage");
         renderObject(0, 130, 210,180,120,
                 "src/main/resources/images/roomAssets/bed.png", "rest", "rest");
         renderObject(0, 450, 210,180,120,
                 "src/main/resources/images/roomAssets/learningDesk.png", "guidebook", "guidebook");
         renderObject(0, 150, 320,60,40,
-                "src/main/resources/images/roomAssets/saveBook.png", "diary", "diary");
+                "src/main/resources/images/roomAssets/saveBook.png", "journal", "journal");
         renderObject(0, 250, 60,200,150,
                 "src/main/resources/images/roomAssets/window.png", "go out", "go out");
         renderObject(0, 210, 350,75,90,
                 "src/main/resources/images/roomAssets/bag.png", "inventory", "inventory");
+        renderObject(0, 40, 390,100,100,
+                "src/main/resources/images/roomAssets/combatGear.png", "armour", "armour");
 
         // Todo: add snack bar to eat 2 snacks before a journey
         panels[0].add(backgrounds[0]);
@@ -168,7 +172,7 @@ public class UI {
         renderBg(1, "src/main/resources/images/townAssets/townBg.png");
 
         renderObject(1, 520, 300,160,140,
-                "src/main/resources/images/townAssets/armourShop.png", "armour", "armour");
+                "src/main/resources/images/townAssets/armourShop.png", "armoury", "armoury");
         renderObject(1, 100, 160,160,140,
                 "src/main/resources/images/townAssets/weaponShop.png", "weapons", "weapons");
         renderObject(1, 300, 130,150,135,
@@ -177,12 +181,60 @@ public class UI {
                 "src/main/resources/images/townAssets/forest.png", "explore paths", "paths");
         renderObject(1, 30, 370,80,160,
                 "src/main/resources/images/townAssets/homeSign.png", "home", "home");
-        // render the townsfolk to talk to
+        // todo: render the townsfolk to talk to
 
         panels[1].add(backgrounds[1]);
     }
 
-    // todo: create alert
+    public void createPathsSelectionScene() {
+        renderBg(2, "src/main/resources/images/townAssets/townBg.png");
+
+        renderObject(2, 520, 300,160,140,
+                "src/main/resources/images/townAssets/armourShop.png", "armour", "armour");
+        renderObject(2, 100, 160,160,140,
+                "src/main/resources/images/townAssets/weaponShop.png", "weapons", "weapons");
+        renderObject(2, 300, 130,150,135,
+                "src/main/resources/images/townAssets/merchant.png", "merchant", "merchant");
+        renderObject(2, 30, 370,80,160,
+                "src/main/resources/images/townAssets/homeSign.png", "home", "home");
+        // todo: render the townsfolk to talk to
+
+        panels[2].add(backgrounds[2]);
+    }
+
+    public void createTravellingScene() {
+        renderBg(1, "src/main/resources/images/townAssets/townBg.png");
+
+        renderObject(1, 520, 300, 160, 140, "src/main/resources/images/townAssets/armourShop.png", "armour", "armour");
+        renderObject(1, 100, 160, 160, 140, "src/main/resources/images/townAssets/weaponShop.png", "weapons", "weapons");
+        renderObject(1, 300, 130, 150, 135, "src/main/resources/images/townAssets/merchant.png", "merchant", "merchant");
+        renderObject(1, 30, 370, 80, 160, "src/main/resources/images/townAssets/homeSign.png", "home", "home");
+        // todo: render the townsfolk to talk to
+
+        panels[3].add(backgrounds[3]);
+    }
+
+    /** create an array of panels for the different scenes
+     *  [0]home, [1]town, [2]paths, [3]travelling,
+     *  [4]combat, [5]loot, [6]inventory, [7]conversation,
+     *  [8]bookPg1, [9]bookPg2, [10]bookPg3
+     */
+    public void createCombatScene() {
+        renderBg(1, "src/main/resources/images/townAssets/townBg.png");
+
+        renderObject(1, 520, 300,160,140,
+                "src/main/resources/images/townAssets/armourShop.png", "armour", "armour");
+        renderObject(1, 100, 160,160,140,
+                "src/main/resources/images/townAssets/weaponShop.png", "weapons", "weapons");
+        renderObject(1, 300, 130,150,135,
+                "src/main/resources/images/townAssets/merchant.png", "merchant", "merchant");
+        renderObject(1, 30, 370,80,160,
+                "src/main/resources/images/townAssets/homeSign.png", "home", "home");
+        // todo: render the townsfolk to talk to
+
+        panels[4].add(backgrounds[4]);
+    }
+
 
 
 

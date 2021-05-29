@@ -1,8 +1,7 @@
 package main.java.swing;
 
 
-import main.java.Main;
-import main.java.items.Gear;
+import main.java.items.UserGear;
 import main.java.items.Inventory;
 import main.java.items.StatusEffectList;
 import main.java.items.StorageItems;
@@ -17,7 +16,7 @@ public class GameLogic {
     public StatusEffectList statusEffectList = new StatusEffectList();
     public StorageItems storageItems = new StorageItems();
     public Inventory inventory = new Inventory();
-    public Gear gear = new Gear();
+    public UserGear gear = new UserGear();
 
 
     public GameLogic(){
@@ -29,13 +28,16 @@ public class GameLogic {
         StatusEffectList.getAllEffectsFromSaveData();
 
         // todo: get user inventory
-
+        Inventory.getAllItemsFromDB();
 
         // todo: get user storage
+        StorageItems.getAllItemsFromDB();
 
         // todo: get user gear
+        this.gear.getGearFromDB();
 
-        // todo: create alert to show that save was complete
+        // todo: create alert to show that load was successful
+        System.out.println("load successful");
     }
 
 }
