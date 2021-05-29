@@ -1,6 +1,7 @@
 package main.java.swing;
 
-import main.java.constants.PanelNums;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -10,6 +11,7 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Optional;
 
 public class UI {
 
@@ -56,6 +58,7 @@ public class UI {
         panels[panelNum].setLayout(null);
         panels[panelNum].setVisible(true);
         frame.add(panels[panelNum]);
+
 
         backgrounds[panelNum] = new JLabel();
         backgrounds[panelNum].setBounds(0,0,740,520);
@@ -122,7 +125,7 @@ public class UI {
                 // on left mouse click
                 if (SwingUtilities.isLeftMouseButton(e)){
                     // apply action
-                    objectClicks.objectClicked(clickAction);
+                    ObjectClicks.objectClicked(clickAction, gameLogic);
                 }
             }
             public void mouseReleased(MouseEvent e) { }
@@ -167,12 +170,17 @@ public class UI {
         renderObject(1, 300, 130,150,135,
                 "src/main/resources/images/townAssets/merchant.png", "merchant", "merchant");
         renderObject(1, 500, 60,220,140,
-                "src/main/resources/images/townAssets/forest.png", "paths", "paths");
+                "src/main/resources/images/townAssets/forest.png", "explore paths", "paths");
         renderObject(1, 30, 370,80,160,
                 "src/main/resources/images/townAssets/homeSign.png", "home", "home");
         // render the townsfolk to talk to
 
         panels[1].add(backgrounds[1]);
     }
+
+    // todo: create alert
+
+
+
 
 }

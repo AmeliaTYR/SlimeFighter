@@ -1,4 +1,4 @@
-package main.java.controllers;
+package main.java.fxmlControllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -8,8 +8,6 @@ import javafx.stage.Stage;
 import main.java.Main;
 import main.java.swing.GameLogic;
 
-import javax.swing.*;
-import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -63,8 +61,8 @@ public class userPageController implements Initializable {
 
     @FXML
     protected void handleResumeGameButtonAction() {
-        Stage stage = (Stage) rtnToGameBtn.getScene().getWindow();
-        stage.hide();
+        Stage currentStage = (Stage) rtnToGameBtn.getScene().getWindow();
+        currentStage.hide();
 
         // go to room scene
         gameLogic = new GameLogic();
@@ -83,7 +81,7 @@ public class userPageController implements Initializable {
 
         // todo:  save user gear
 
-        //  todo: create alert to show that save was complete
+        // todo: create alert to show that save was complete
 
     }
 
