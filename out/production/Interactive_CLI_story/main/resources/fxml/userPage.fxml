@@ -63,7 +63,7 @@
                            </children>
                         </VBox>
                         <Button fx:id="saveBtn1" mnemonicParsing="false" text="Delete Profile" GridPane.rowIndex="2" />
-                        <Button fx:id="saveBtn" mnemonicParsing="false" text="Save" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Button fx:id="aboutBtn" mnemonicParsing="false" text="About" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>
                </children>

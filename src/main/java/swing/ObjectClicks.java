@@ -1,9 +1,5 @@
 package main.java.swing;
 
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-
 import javax.swing.*;
 import java.util.Optional;
 
@@ -23,18 +19,20 @@ public class ObjectClicks {
             case "rest": {
                 // restore currentPlayer hp and mp to max
                 int dialogButton = JOptionPane.YES_NO_OPTION;
-                JOptionPane.showConfirmDialog (null, "Rest restores hp & mp, clears stats. Rest?","Warning",dialogButton);
+                dialogButton = JOptionPane.showConfirmDialog(null, "Rest restores hp & mp AND clears stats. Rest?","Warning", dialogButton);
 
                 if (dialogButton == JOptionPane.YES_OPTION) {
                     // restore currentUser hp and mp to max based on level
                     // clear stats array
+                    System.out.println("user choose to rest");
+                } else {
+                    System.out.println("user did not rest");
                 }
 
-                System.out.println("User is resting");
                 break;
             }
             case "storage": {
-                System.out.println("opened inventory");
+                System.out.println("opened storage");
                 break;
             }
             case "guidebook": {
@@ -42,7 +40,7 @@ public class ObjectClicks {
                 break;
             }
             case "diary": {
-                System.out.println("go to user page");
+                System.out.println("go to in game stats page");
                 break;
             }
             case "go out": {
@@ -98,27 +96,6 @@ public class ObjectClicks {
                 System.out.println("No action matched");
             }
         }
-    }
-
-    /**
-     *  Alert user resting will restore full health but remove all stats
-     */
-    private static void restAlert() {
-
-        Alert alert = new Alert(Alert.AlertType.INFORMATION,"", ButtonType.YES, ButtonType.NO);  //new alert object
-        alert.setTitle("Rest");  //warning box title
-        alert.setHeaderText("Rest");// Header
-        alert.setContentText("Resting will reset all stats and restore full hp and mp. Proceed?"); //Description of warning
-        alert.getDialogPane().setPrefSize(300, 150); //sets size of alert box
-
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.YES){
-            System.out.println("user chose YES");
-        } else {
-            System.out.println("user chose NO or closed the dialog");
-
-        }
-
     }
 
 
