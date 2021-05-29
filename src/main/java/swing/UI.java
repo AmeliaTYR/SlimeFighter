@@ -92,8 +92,6 @@ public class UI {
      */
     public void renderObject(int panelNum, int posX, int posY, int width, int height,
                              String fileName, String objectText, String clickAction) {
-        // TODO: add hint text on mouseover
-
         // create objects as labels (so they can be clicked)
         JLabel objLabel = new JLabel();
         objLabel.setBounds(posX, posY, width, height); //  ensure object appears in particular spot
@@ -134,15 +132,13 @@ public class UI {
             }
 
             public void mouseEntered(MouseEvent e) {
-                // todo: spawn tool tip
-
             }
 
             public void mouseExited(MouseEvent e) {
-                // todo: despawn tool tip
-
             }
         });
+
+        objLabel.setToolTipText(objectText);
 
         panels[panelNum].add(objLabel);
 
