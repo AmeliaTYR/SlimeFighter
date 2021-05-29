@@ -4,7 +4,7 @@ import main.java.miscJunk.ActionHandler;
 
 public class GameLogic {
 
-    // ActionHandler actionHandler = new ActionHandler(this);
+    public ItemManagementUI itemManagementUI = new ItemManagementUI(this);
     public UI ui = new UI(this);
 
     public GameLogic(){

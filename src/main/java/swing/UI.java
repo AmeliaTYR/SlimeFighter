@@ -15,7 +15,6 @@ public class UI {
 
     GameLogic gameLogic;
 
-
     JFrame frame;
 
     /** create an array of panels for the different scenes
@@ -30,6 +29,7 @@ public class UI {
     public UI(GameLogic gameLogic) {
         this.gameLogic = gameLogic;
         createMainWindow();
+        createHomeScene();
         createTownScene();
         frame.setVisible(true);
     }
@@ -117,9 +117,7 @@ public class UI {
         objLabel.addMouseListener(new MouseListener() {
             // only need do something if user hovers over, stops hovering over or clicks object
 
-            public void mouseClicked(MouseEvent e) {
-            }
-
+            public void mouseClicked(MouseEvent e) { }
             public void mousePressed(MouseEvent e) {
                 // on left mouse click
                 if (SwingUtilities.isLeftMouseButton(e)){
@@ -127,15 +125,9 @@ public class UI {
                     objectClicks.objectClicked(clickAction);
                 }
             }
-
-            public void mouseReleased(MouseEvent e) {
-            }
-
-            public void mouseEntered(MouseEvent e) {
-            }
-
-            public void mouseExited(MouseEvent e) {
-            }
+            public void mouseReleased(MouseEvent e) { }
+            public void mouseEntered(MouseEvent e) { }
+            public void mouseExited(MouseEvent e) { }
         });
 
         objLabel.setToolTipText(objectText);
@@ -161,6 +153,7 @@ public class UI {
         renderObject(0, 210, 350,75,90,
                 "src/main/resources/images/roomAssets/bag.png", "inventory", "inventory");
 
+        // Todo: add snack bar to eat 2 snacks before a journey
         panels[0].add(backgrounds[0]);
     }
 
@@ -177,9 +170,9 @@ public class UI {
                 "src/main/resources/images/townAssets/forest.png", "paths", "paths");
         renderObject(1, 30, 370,80,160,
                 "src/main/resources/images/townAssets/homeSign.png", "home", "home");
+        // render the townsfolk to talk to
+
         panels[1].add(backgrounds[1]);
     }
 
-
-    // Todo: create tool tip label appear method tool tip appears a bit to the side
 }

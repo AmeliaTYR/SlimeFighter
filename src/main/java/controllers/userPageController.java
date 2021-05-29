@@ -42,7 +42,7 @@ public class userPageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Todo: add user Profile pic code
+        // Todo: add change user Profile pic code
 
         // get user data
         usernameProfileDisplay.setText(Main.currentUser.getUsername());
@@ -52,6 +52,12 @@ public class userPageController implements Initializable {
         hpNumLabel.setText(Integer.toString(Main.currentUser.getHp()));
         mpNumLabel.setText(Integer.toString(Main.currentUser.getMp()));
         defNumLabel.setText(Integer.toString(Main.currentUser.getDef()));
+
+        // todo: load user stat data
+
+        // todo: load user gear, inventory and storage into array lists
+            // make query
+            // convert for item in list put in to array list using the class
     }
 
 
@@ -62,6 +68,22 @@ public class userPageController implements Initializable {
 
         // go to room scene
         gameLogic = new GameLogic();
+
+    }
+
+    @FXML
+    protected void handleSaveButtonAction() {
+        // todo: save user basic data (eg level, exp, coins etc)
+
+        // todo: save user statusEffects data
+
+        // todo: save user inventory
+
+        // todo: save user storage
+
+        // todo:  save user gear
+
+        //  todo: create alert to show that save was complete
 
     }
 
