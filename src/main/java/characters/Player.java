@@ -4,11 +4,14 @@ public class Player {
     private String username;
     private int hp;
     private int mp;
+    private int maxHp;
+    private int maxMp;
     private int exp;
     private int level;
     private int coins;
-    private String location;
-    private int atk;
+    private int flyingAtk;
+    private int shieldingAtk;
+    private int phasingAtk;
     private int def;
 
 
@@ -60,27 +63,51 @@ public class Player {
         this.coins = coins;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public int getAtk() {
-        return atk;
-    }
-
-    public void setAtk(int atk) {
-        this.atk = atk;
-    }
-
     public int getDef() {
         return def;
     }
 
     public void setDef(int def) {
         this.def = def;
+    }
+
+    public int getMaxHp() {
+        return maxHp;
+    }
+
+    public void setMaxHp(int maxHp) {
+        this.maxHp = maxHp;
+    }
+
+    public int getMaxMp() {
+        return maxMp;
+    }
+
+    public void setMaxMp(int maxMp) {
+        this.maxMp = maxMp;
+    }
+
+    public int getFlyingAtk() {
+        return flyingAtk;
+    }
+
+    public void setFlyingAtk(int flyingAtk) {
+        this.flyingAtk = flyingAtk;
+    }
+
+    public int getShieldingAtk() {
+        return shieldingAtk;
+    }
+
+    public void setShieldingAtk(int shieldingAtk) {
+        this.shieldingAtk = shieldingAtk;
+    }
+
+    public int getPhasingAtk() {
+        return phasingAtk;
+    }
+
+    public void setPhasingAtk(int phasingAtk) {
+        this.phasingAtk = phasingAtk;
     }
 }

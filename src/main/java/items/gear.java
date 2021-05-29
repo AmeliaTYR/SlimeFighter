@@ -1,5 +1,6 @@
 package main.java.items;
 
-public class MagicItems extends Items {
+// Gear the player has equipped
+public class gear {
 
 }

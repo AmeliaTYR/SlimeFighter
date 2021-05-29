@@ -1,2 +1,10 @@
-package main.java.swing;public class Scenes {
+package main.java.swing;
+
+public class ScenesController {
+
+    GameLogic gl;
+
+
+
+
 }

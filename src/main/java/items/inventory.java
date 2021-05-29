@@ -1,4 +1,6 @@
 package main.java.items;
 
-public class Bag {
+// items the player has on hand
+public class inventory {
+
 }

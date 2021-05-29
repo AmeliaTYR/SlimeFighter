@@ -1,4 +1,6 @@
 package main.java.items;
 
-public class KeyItems extends Items {
+// items the player has in storage
+public class storageItems {
+
 }

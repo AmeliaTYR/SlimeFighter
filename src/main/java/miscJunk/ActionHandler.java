@@ -1,4 +1,6 @@
-package main.java.swing;
+package main.java.miscJunk;
+
+import main.java.swing.GameLogic;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

@@ -161,7 +161,7 @@ public class loginFXMLController implements Initializable {
                     Main.currentUser.setDef(result.getInt("def"));
 
 
-                    System.out.println("Username: " + Main.currentUser.getUsername() + ", atk: " + Main.currentUser.getAtk());
+                    System.out.println("Username: " + Main.currentUser.getUsername() + ", def: " + Main.currentUser.getDef());
 
                     // go to userPage
                     System.out.println("changing stage");

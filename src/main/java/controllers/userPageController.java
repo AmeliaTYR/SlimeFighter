@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import main.java.Main;
+import main.java.swing.GameLogic;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,6 +14,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class userPageController implements Initializable {
+    public GameLogic gameLogic;
+
     @FXML
     private Label levelNumLabel;
 
@@ -54,31 +57,11 @@ public class userPageController implements Initializable {
 
     @FXML
     protected void handleResumeGameButtonAction() {
-        ImageIcon img = new ImageIcon("src/main/resources/images/SlimeFighterTransparent.png");
-        JFrame frame = new JFrame("Slime Fighters");
-
-        JPanel panel = new JPanel();
-        panel.setLayout(new FlowLayout());
-        frame.setIconImage(img.getImage());
-
-        JLabel label = new JLabel("JFrame By Example");
-
-        JButton button = new JButton();
-        button.setText("Button");
-        frame.setIconImage(img.getImage());
-
-        //        panel.add(label);
-        //        panel.add(button);
-
-        frame.add(panel);
-        frame.setIconImage(img.getImage());
-        frame.setSize(800, 600);
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
-
         Stage stage = (Stage) rtnToGameBtn.getScene().getWindow();
         stage.hide();
+
+        // go to room scene
+        gameLogic = new GameLogic();
 
     }
 
