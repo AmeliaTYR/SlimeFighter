@@ -203,12 +203,12 @@ public class UI {
     }
 
     public void createTravellingScene() {
-        renderBg(1, "src/main/resources/images/townAssets/townBg.png");
+        renderBg(3, "src/main/resources/images/townAssets/townBg.png");
 
-        renderObject(1, 520, 300, 160, 140, "src/main/resources/images/townAssets/armourShop.png", "armour", "armour");
-        renderObject(1, 100, 160, 160, 140, "src/main/resources/images/townAssets/weaponShop.png", "weapons", "weapons");
-        renderObject(1, 300, 130, 150, 135, "src/main/resources/images/townAssets/merchant.png", "merchant", "merchant");
-        renderObject(1, 30, 370, 80, 160, "src/main/resources/images/townAssets/homeSign.png", "home", "home");
+        renderObject(3, 520, 300, 160, 140, "src/main/resources/images/townAssets/armourShop.png", "armour", "armour");
+        renderObject(3, 100, 160, 160, 140, "src/main/resources/images/townAssets/weaponShop.png", "weapons", "weapons");
+        renderObject(3, 300, 130, 150, 135, "src/main/resources/images/townAssets/merchant.png", "merchant", "merchant");
+        renderObject(3, 30, 370, 80, 160, "src/main/resources/images/townAssets/homeSign.png", "home", "home");
         // todo: render the townsfolk to talk to
 
         panels[3].add(backgrounds[3]);
@@ -220,15 +220,15 @@ public class UI {
      *  [8]bookPg1, [9]bookPg2, [10]bookPg3
      */
     public void createCombatScene() {
-        renderBg(1, "src/main/resources/images/townAssets/townBg.png");
+        renderBg(4, "src/main/resources/images/townAssets/townBg.png");
 
-        renderObject(1, 520, 300,160,140,
+        renderObject(4, 520, 300,160,140,
                 "src/main/resources/images/townAssets/armourShop.png", "armour", "armour");
-        renderObject(1, 100, 160,160,140,
+        renderObject(4, 100, 160,160,140,
                 "src/main/resources/images/townAssets/weaponShop.png", "weapons", "weapons");
-        renderObject(1, 300, 130,150,135,
+        renderObject(4, 300, 130,150,135,
                 "src/main/resources/images/townAssets/merchant.png", "merchant", "merchant");
-        renderObject(1, 30, 370,80,160,
+        renderObject(4, 30, 370,80,160,
                 "src/main/resources/images/townAssets/homeSign.png", "home", "home");
         // todo: render the townsfolk to talk to
 
