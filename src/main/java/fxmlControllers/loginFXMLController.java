@@ -102,11 +102,12 @@ public class loginFXMLController implements Initializable {
                             + username + "', '" + password + "')";
                     newUserStatement.executeUpdate(newUserSql);
 
+                    connection.close();
+
                     // set main user
                     Main.currentUser.setUsername(username);
 
                     // go to starting page
-
                     System.out.println("closing stage");
 
                     // change stage
@@ -168,6 +169,8 @@ public class loginFXMLController implements Initializable {
 
                     System.out.println("Username: " + Main.currentUser.getUsername() +
                             ", level: " + Main.currentUser.getLevel());
+
+                    connection.close();
 
                     // go to userPage
                     System.out.println("changing stage to userPage");

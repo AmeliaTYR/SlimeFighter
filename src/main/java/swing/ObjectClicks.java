@@ -1,6 +1,9 @@
 package main.java.swing;
 
+import main.java.Main;
+import main.java.items.Inventory;
 import main.java.items.StatusEffectList;
+import main.java.items.StorageItems;
 
 import javax.swing.JOptionPane;
 
@@ -38,28 +41,22 @@ public class ObjectClicks {
                 break;
             }
             case "guidebook": {
+//                StorageItems.addWater(); // for testing db
                 System.out.println("Go to guidebook");
                 break;
             }
             case "journal": {
                 System.out.println("go to in game stats page");
-                // todo: save user basic data (eg level, exp, coins etc) to currentUser
 
-
-                // todo: save user statusEffects data
-
-
-                // todo: save user inventory
-
-
-                // todo: save user storage
-
-
-                // todo:  save user gear
-
-
+                // todo: move save options to inside book
+//                Main.currentUser.savePlayerDataToDB();
+//                StatusEffectList.saveCurrentStats();
+//                Inventory.saveInventorytoDB();
+//                StorageItems.saveStorageToDB();
+//                gameLogic.gear.saveUserGeartoDB();
+                
                 // todo: create alert to show that save was complete
-
+                System.out.println("save complete");
                 break;
             }
             case "go out": {

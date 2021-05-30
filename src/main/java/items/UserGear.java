@@ -39,12 +39,43 @@ public class UserGear {
                 this.helmet = userGearResultset.getString("helmet");
                 this.body = userGearResultset.getString("body");
                 this.shield = userGearResultset.getString("shield");
-                this.body = userGearResultset.getString("body");
+                this.boots = userGearResultset.getString("boots");
 
                 this.weapon = userGearResultset.getString("weapon");
                 this.weapon2 = userGearResultset.getString("weapon2");
 
             }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            System.out.println("cannot connect to database");
+        }
+
+    }
+
+    public void saveUserGeartoDB() {
+        // sql query to update player info
+        try {
+            // make the sql query
+            Connection connection = DriverManager.getConnection(jdbcURL);
+            String sql = "UPDATE userGear SET " +
+                    "helmet = '" + this.helmet + "', " +
+                    "body = '" + this.body + "', " +
+                    "shield = '" + this.shield + "', " +
+                    "boots = '" + this.boots + "', " +
+                    "weapon = '" + this.weapon + "', " +
+                    "weapon2 = '" + this.weapon2 + "', " +
+                    "WHERE userName = '" + Main.currentUser.getUsername() + "'";
+            System.out.println(sql);
+            Statement statement = connection.createStatement();
+            int updated = statement.executeUpdate(sql);
+
+            if (updated == 1){
+                System.out.println("user Gear update successful");
+            }
+
+            connection.close();
+
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();

@@ -155,7 +155,7 @@ public class UI {
                 "src/main/resources/images/roomAssets/bed.png", "rest", "rest");
         renderObject(0, 450, 210,180,120,
                 "src/main/resources/images/roomAssets/learningDesk.png", "guidebook", "guidebook");
-        renderObject(0, 150, 320,60,40,
+        renderObject(0, 150, 340,60,40,
                 "src/main/resources/images/roomAssets/saveBook.png", "journal", "journal");
         renderObject(0, 250, 60,200,150,
                 "src/main/resources/images/roomAssets/window.png", "go out", "go out");

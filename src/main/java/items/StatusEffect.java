@@ -65,4 +65,9 @@ public class StatusEffect {
     public void setPhasingAtkBoost(int phasingAtkBoost) {
         this.phasingAtkBoost = phasingAtkBoost;
     }
+
+    @Override
+    public String toString() {
+        return effectTitle + ", hpPerTurn=" + hpPerTurn + ", mpPerTurn=" + mpPerTurn + ", turnsLeft=" + turnsLeft + ", flyingAtkBoost=" + flyingAtkBoost + ", shieldingAtkBoost=" + shieldingAtkBoost + ", phasingAtkBoost=" + phasingAtkBoost;
+    }
 }

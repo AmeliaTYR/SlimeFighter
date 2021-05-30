@@ -50,6 +50,8 @@ public class StatusEffectList {
                 );
             }
 
+            connection.close();
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
             System.out.println("cannot connect to database");
@@ -59,7 +61,47 @@ public class StatusEffectList {
 
     public static void saveCurrentStats(){
         // sql query to drop all existing stats in table with player name
-        // sql query to insert player new stats one by one from the array
+        try {
+            // make the sql query
+            Connection connection = DriverManager.getConnection(jdbcURL);
+            String sql = "DELETE FROM playerStatusEffects WHERE userName = '" + Main.currentUser.getUsername() + "'";
+            System.out.println(sql);
+            Statement statement = connection.createStatement();
+            int deleted = statement.executeUpdate(sql);
+
+            if (deleted != 0){
+                System.out.println("user status effects wipe successful");
+            }
+
+            // sql query to insert player new stats one by one from the array
+            for (int k = 0; k < playerStatusEffects.size(); k++){
+                String sql2 = "INSERT INTO inventory " +
+                        "(userName, effectTitle, hpPerTurn, mpPerTurn, turnsLeft, " +
+                        "flyingAtkBoost, shieldingAtkBoost, phasingAtkBoost) " +
+                        "VALUES (\"" +
+                        Main.currentUser.getUsername() + "\", \"" +
+                        playerStatusEffects.get(k).getEffectTitle() + "\", " +
+                        playerStatusEffects.get(k).getHpPerTurn() + ", " +
+                        playerStatusEffects.get(k).getMpPerTurn() + ", " +
+                        playerStatusEffects.get(k).getTurnsLeft() + ", " +
+                        playerStatusEffects.get(k).getFlyingAtkBoost() + ", " +
+                        playerStatusEffects.get(k).getShieldingAtkBoost() + ", " +
+                        playerStatusEffects.get(k).getPhasingAtkBoost() + ");";
+
+                statement.addBatch(sql2);
+
+            }
+
+            statement.executeBatch();
+
+            connection.close();
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            System.out.println("cannot connect to database");
+        }
+
     }
 
 }

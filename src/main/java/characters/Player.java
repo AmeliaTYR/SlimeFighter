@@ -1,5 +1,14 @@
 package main.java.characters;
 
+import main.java.Main;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import static main.java.constants.SQLiteDB.jdbcURL;
+
 public class Player {
     private String username;
 
@@ -41,11 +50,43 @@ public class Player {
         this.shieldingAtk = shieldingAtk;
         this.phasingAtk = phasingAtk;
         this.def = def;
+
+        this.maxHp = 10 + (level - 1) * 3;
+        this.maxMp = 6 + (level - 1) * 2;
         this.inventoryLimit = 10 + this.level;
     }
 
     public void savePlayerDataToDB(){
         // sql query to update player info
+        try {
+            // make the sql query
+            Connection connection = DriverManager.getConnection(jdbcURL);
+            String sql = "UPDATE players SET " +
+                    "hp = " + this.hp + ", " +
+                    "mp = " + this.mp + ", " +
+                    "level = " + this.level + ", " +
+                    "Exp = " + this.exp + ", " +
+                    "coins = " + this.coins + ", " +
+                    "flyingAtk = " + this.flyingAtk + ", " +
+                    "shieldingAtk = " + this.shieldingAtk + ", " +
+                    "phasingAtk = " + this.phasingAtk + ", " +
+                    "def = " + this.def + ", " +
+                    "WHERE userName = '" + Main.currentUser.getUsername() + "'";
+            System.out.println(sql);
+            Statement statement = connection.createStatement();
+            int updated = statement.executeUpdate(sql);
+
+            if (updated == 1){
+                System.out.println("profile update successful");
+            }
+
+            connection.close();
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            System.out.println("cannot connect to database");
+        }
 
     }
 
