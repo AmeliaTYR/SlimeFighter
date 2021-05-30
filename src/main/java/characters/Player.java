@@ -70,7 +70,7 @@ public class Player {
                     "flyingAtk = " + this.flyingAtk + ", " +
                     "shieldingAtk = " + this.shieldingAtk + ", " +
                     "phasingAtk = " + this.phasingAtk + ", " +
-                    "def = " + this.def + ", " +
+                    "def = " + this.def + " " +
                     "WHERE userName = '" + Main.currentUser.getUsername() + "'";
             System.out.println(sql);
             Statement statement = connection.createStatement();

@@ -75,7 +75,7 @@ public class StatusEffectList {
 
             // sql query to insert player new stats one by one from the array
             for (int k = 0; k < playerStatusEffects.size(); k++){
-                String sql2 = "INSERT INTO inventory " +
+                String sql2 = "INSERT INTO playerStatusEffects " +
                         "(userName, effectTitle, hpPerTurn, mpPerTurn, turnsLeft, " +
                         "flyingAtkBoost, shieldingAtkBoost, phasingAtkBoost) " +
                         "VALUES (\"" +

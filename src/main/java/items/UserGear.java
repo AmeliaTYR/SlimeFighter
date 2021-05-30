@@ -64,7 +64,7 @@ public class UserGear {
                     "shield = '" + this.shield + "', " +
                     "boots = '" + this.boots + "', " +
                     "weapon = '" + this.weapon + "', " +
-                    "weapon2 = '" + this.weapon2 + "', " +
+                    "weapon2 = '" + this.weapon2 + "' " +
                     "WHERE userName = '" + Main.currentUser.getUsername() + "'";
             System.out.println(sql);
             Statement statement = connection.createStatement();

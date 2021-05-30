@@ -72,7 +72,7 @@ public class StorageItems {
             int deleted = statement.executeUpdate(sql);
 
             if (deleted != 0){
-                System.out.println("Wipe successful");
+                System.out.println("storage wipe successful");
             }
 
             ArrayList<Item> itemCounts = new ArrayList<>();

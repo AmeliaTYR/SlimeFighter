@@ -49,12 +49,12 @@ public class ObjectClicks {
                 System.out.println("go to in game stats page");
 
                 // todo: move save options to inside book
-//                Main.currentUser.savePlayerDataToDB();
-//                StatusEffectList.saveCurrentStats();
-//                Inventory.saveInventorytoDB();
-//                StorageItems.saveStorageToDB();
-//                gameLogic.gear.saveUserGeartoDB();
-                
+                Main.currentUser.savePlayerDataToDB();
+                StatusEffectList.saveCurrentStats();
+                Inventory.saveInventorytoDB();
+                StorageItems.saveStorageToDB();
+                gameLogic.gear.saveUserGeartoDB();
+
                 // todo: create alert to show that save was complete
                 System.out.println("save complete");
                 break;
