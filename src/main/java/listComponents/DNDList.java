@@ -1,4 +1,4 @@
-package main.java.dragNdrop;
+package main.java.listComponents;
 
 import javax.swing.*;
 import java.awt.datatransfer.DataFlavor;

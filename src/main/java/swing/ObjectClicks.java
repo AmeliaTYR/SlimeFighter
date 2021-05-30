@@ -7,6 +7,9 @@ import main.java.items.StorageItems;
 
 import javax.swing.JOptionPane;
 
+import static main.java.swing.ItemsUI.openInventoryUI;
+import static main.java.swing.ItemsUI.openStorageUI;
+
 public class ObjectClicks {
 
     GameLogic gameLogic;
@@ -38,6 +41,7 @@ public class ObjectClicks {
             }
             case "storage": {
                 System.out.println("opened storage");
+                openStorageUI();
                 break;
             }
             case "guidebook": {
@@ -69,6 +73,7 @@ public class ObjectClicks {
             case "inventory": {
                 // bring up option for take or store
                 System.out.println("open inventory");
+                openInventoryUI();
 
                 break;
             }
