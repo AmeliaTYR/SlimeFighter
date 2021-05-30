@@ -69,6 +69,7 @@ public class ObjectClicks {
             case "inventory": {
                 // bring up option for take or store
                 System.out.println("open inventory");
+
                 break;
             }
             case "armour": {
