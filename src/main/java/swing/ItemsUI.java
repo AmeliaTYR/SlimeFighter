@@ -211,7 +211,7 @@ public class ItemsUI {
         frame.setIconImage(img.getImage());
         frame.setSize(400, 400);
         frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setVisible(true);
     }
 }
