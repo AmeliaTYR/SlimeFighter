@@ -2,17 +2,33 @@ package main.java.swing;
 
 import main.java.Main;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
+import java.awt.BorderLayout;
+import java.awt.ComponentOrientation;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class PathsUI {
 
+    public GameLogic gameLogic;
+
     public static String pathSelected = "meadow";
 
+    public PathsUI(GameLogic gameLogic){
+        this.gameLogic = gameLogic;
+    }
 
-    public static void openPathSelectionUI() {
+
+    public static void openPathSelectionUI(GameLogic gameLogic) {
         // switch case for each of the levels
         // add labels to allow adding for each of the paths
 
@@ -123,6 +139,10 @@ public class PathsUI {
                 textArea.append("Return to village");
                 textArea.append(System.getProperty("line.separator"));
 
+                // close the current window for the path selector
+                frame.dispose();
+
+
 
             }
         });
@@ -131,9 +151,24 @@ public class PathsUI {
         letsGoButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Let's go! clicked");
-                textArea.append("Let's go!");
-                textArea.append(System.getProperty("line.separator"));
-                // run function to start travel sequence
+//                textArea.append("Let's go!");
+//                textArea.append(System.getProperty("line.separator"));
+
+                // wait a while after updating text
+//                try {
+//                    Thread.sleep(2000);
+//                } catch (InterruptedException interruptedException) {
+//                    System.out.println("sleep interrupted");
+//                }
+
+                // todo: run function to start travel sequence passing the path as a parameter
+                gameLogic.scenesController.changeToTravellingScene();
+
+                // close the current window for the path selector
+                frame.dispose();
+
+
+
             }
         });
 
@@ -156,5 +191,8 @@ public class PathsUI {
         frame.setVisible(true);
 
     }
+
+
+
 
 }

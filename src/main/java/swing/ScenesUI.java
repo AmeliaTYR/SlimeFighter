@@ -21,6 +21,8 @@ public class ScenesUI {
 
     GameLogic gameLogic;
 
+    TravellingUI travellingUI;
+
     JFrame frame;
 
     public JPanel panels[] = new JPanel[11];
@@ -34,6 +36,8 @@ public class ScenesUI {
         createMainWindow();
         createHomeScene();
         createTownScene();
+        createTravellingScene();
+
         // Todo: add create for all the other scenes
         frame.setVisible(true);
     }
@@ -182,19 +186,8 @@ public class ScenesUI {
     }
 
     public void createTravellingScene() {
-        renderBg(3, "src/main/resources/images/pathAssets/pathBg.png");
-
-        renderObject(3, 520, 300, 160, 140,
-                "src/main/resources/images/townAssets/armourShop.png", "armour", "armour");
-        renderObject(3, 100, 160, 160, 140,
-                "src/main/resources/images/townAssets/weaponShop.png", "weapons", "weapons");
-        renderObject(3, 300, 130, 150, 135,
-                "src/main/resources/images/townAssets/merchant.png", "merchant", "merchant");
-        renderObject(3, 30, 370, 80, 160,
-                "src/main/resources/images/townAssets/homeSign.png", "home", "home");
-        // todo: render the townsfolk to talk to
-
-        panels[3].add(backgrounds[3]);
+        panels[3] = new TravellingUI();
+        frame.add(panels[3]);
     }
 
     /** create an array of panels for the different scenes

@@ -10,6 +10,7 @@ public class GameLogic {
 
     public ItemManagementUI itemManagementUI = new ItemManagementUI(this);
     public ScenesUI scenesUi = new ScenesUI(this);
+    public PathsUI pathsUI = new PathsUI(this);
     public ScenesController scenesController = new ScenesController(this);
     public ObjectClicks objectClicks = new ObjectClicks(this);
 

@@ -13,7 +13,7 @@ import static main.java.swing.PathsUI.openPathSelectionUI;
 
 public class ObjectClicks {
 
-    GameLogic gameLogic;
+    public GameLogic gameLogic;
 
     public ObjectClicks(GameLogic gameLogic){
         this.gameLogic = gameLogic;
@@ -104,7 +104,7 @@ public class ObjectClicks {
             }
             case "paths": {
                 // switch scene to paths scene
-                openPathSelectionUI();
+                openPathSelectionUI(gameLogic);
                 System.out.println("explore paths");
                 break;
             }
