@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 
 import static main.java.swing.ItemsUI.openInventoryUI;
 import static main.java.swing.ItemsUI.openStorageUI;
+import static main.java.swing.PathsUI.openPathSelectionUI;
 
 public class ObjectClicks {
 
@@ -53,11 +54,11 @@ public class ObjectClicks {
                 System.out.println("go to in game stats page");
 
                 // todo: move save options to inside book
-                Main.currentUser.savePlayerDataToDB();
-                StatusEffectList.saveCurrentStats();
-                Inventory.saveInventorytoDB();
-                StorageItems.saveStorageToDB();
-                gameLogic.gear.saveUserGeartoDB();
+//                Main.currentUser.savePlayerDataToDB();
+//                StatusEffectList.saveCurrentStats();
+//                Inventory.saveInventorytoDB();
+//                StorageItems.saveStorageToDB();
+//                gameLogic.gear.saveUserGeartoDB();
 
                 // todo: create alert to show that save was complete
                 System.out.println("save complete");
@@ -103,6 +104,7 @@ public class ObjectClicks {
             }
             case "paths": {
                 // switch scene to paths scene
+                openPathSelectionUI();
                 System.out.println("explore paths");
                 break;
             }

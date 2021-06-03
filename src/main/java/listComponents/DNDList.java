@@ -19,7 +19,7 @@ import java.awt.dnd.DropTargetEvent;
 import java.awt.dnd.DropTargetListener;
 
 
-/** THIS CODE FOR THE DRAG AND DROP COMPONENT MECHANIC is from here:
+/** THIS CODE FOR THE DRAG AND DROP COMPONENT MECHANIC is originally from here:
  *  http://www.java2s.com/Code/Java/Swing-Components/DNDDraganddropList.htm
  */
 

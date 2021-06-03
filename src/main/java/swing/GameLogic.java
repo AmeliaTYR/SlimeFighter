@@ -9,7 +9,7 @@ import main.java.items.StorageItems;
 public class GameLogic {
 
     public ItemManagementUI itemManagementUI = new ItemManagementUI(this);
-    public UI ui = new UI(this);
+    public ScenesUI scenesUi = new ScenesUI(this);
     public ScenesController scenesController = new ScenesController(this);
     public ObjectClicks objectClicks = new ObjectClicks(this);
 
@@ -24,16 +24,16 @@ public class GameLogic {
 
         // user basic data (eg level, exp, coins etc) to currentUser already on login
 
-        // todo: get user statusEffects data
+        // get user statusEffects data
         StatusEffectList.getAllEffectsFromSaveData();
 
-        // todo: get user inventory
+        // get user inventory
         Inventory.getAllItemsFromDB();
 
-        // todo: get user storage
+        // get user storage
         StorageItems.getAllItemsFromDB();
 
-        // todo: get user gear
+        // get user gear
         this.gear.getGearFromDB();
 
         // todo: create alert to show that load was successful
