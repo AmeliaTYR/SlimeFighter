@@ -254,4 +254,15 @@ public class ItemsUI {
      * Todo: create the sell mechanic of the merchant store
      */
 
+    /**
+     * Todo: create gear equipting ui (swap with interview)
+     */
+
+    /**
+     * Open UI Frame for the Inventory (using and tossing items)
+     */
+    public static void openGearUI() {
+
+    }
+
 }

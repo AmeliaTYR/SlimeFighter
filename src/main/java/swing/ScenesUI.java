@@ -191,9 +191,13 @@ public class ScenesUI {
     }
 
     /** create an array of panels for the different scenes
+     *  panels[]
      *  [0]home, [1]town, [2], [3]travelling,
      *  [4]combat, [5]loot, [6]inventory, [7]conversation,
-     *  [8]bookPg1, [9]bookPg2, [10]bookPg3
+     *
+     *  bookPanels[]
+     *  book pages now as their own separate window!!!
+     *  [0]bookPg1, [1]bookPg2, [2]bookPg3
      */
     public void createCombatScene() {
         renderBg(4, "src/main/resources/images/townAssets/townBg.png");

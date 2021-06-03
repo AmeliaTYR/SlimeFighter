@@ -60,15 +60,20 @@ public class TravellingUI extends JPanel{
         setVisible(true);
 
 
-        // todo: render trees on different layers for parallax
+        // todo: render trees on different layers for parallax (minor issue)
 
         // todo: render button for keep going
+        // roll for next length of travel and event until end
 
         // todo: render button for check stats
+        // todo: stats book as its own frame just for view
 
         // todo: render button for retire
+        // todo: create alert when retire to confirm if want to return to main screen (then link back and
+        // reset travel progress to 0
 
         // todo: render button for change gear (with current inventory) (take from ItemsUI gear management)
+        // open gear UI
 
         // todo: render starting position of the user
         characterPosX = 0;
@@ -90,12 +95,9 @@ public class TravellingUI extends JPanel{
         g.drawImage(travellerImage, characterPosX, characterPosY, this);
 
 
-
-
-
-
     }
 
+    // TODO: finish the moving forward event generation function when the keep going button is clicked
     public void moveForward() {
         // check if still have room to move forward (otherwise do nothing)
         // generate number of steps to move forward
