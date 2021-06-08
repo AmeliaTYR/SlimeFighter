@@ -25,18 +25,28 @@ public class ScenesUI {
 
     JFrame frame;
 
-    public JPanel panels[] = new JPanel[11];
+    public JPanel panels[] = new JPanel[9];
+    public JPanel bkPgPanels[] = new JPanel[3];
 
     // create an array of background labels for each of the scenes
-    public JLabel backgrounds[] = new JLabel[11];
+    public JLabel backgrounds[] = new JLabel[9];
+    public JLabel bkPagesBg = new JLabel();
 
 
     public ScenesUI(GameLogic gameLogic) {
         this.gameLogic = gameLogic;
+
+        // create main scenes
         createMainWindow();
         createHomeScene();
         createTownScene();
         createTravellingScene();
+
+        // create book window scenes
+        createBkPgBg("src/main/resources/images/journalAssets/bookBg.png");
+//        createBkPg0();
+//        createBkPg1();
+//        createBkPg2();
 
         // Todo: add create for all the other scenes
         frame.setVisible(true);
@@ -88,6 +98,38 @@ public class ScenesUI {
 
     }
 
+    public void renderBookBg(int panelNum){
+        bkPgPanels[panelNum] = new JPanel(); // recreate panel
+        bkPgPanels[panelNum].setBounds(20,20,740,520);
+        bkPgPanels[panelNum].setBackground(Color.blue);
+        bkPgPanels[panelNum].setLayout(null);
+        bkPgPanels[panelNum].setVisible(true);
+        frame.add(bkPgPanels[panelNum]);
+
+
+    }
+
+    public void createBkPgBg(String bgFileName) {
+        bkPagesBg = new JLabel();
+        bkPagesBg.setBounds(0,0,740,520);
+
+        // get the image to be rendered
+        BufferedImage img = null;
+        try {
+            img = ImageIO.read(new File(bgFileName));
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Object image file not read");
+        }
+
+        Image dimg = img.getScaledInstance(bkPagesBg.getWidth(), bkPagesBg.getHeight(),
+                Image.SCALE_SMOOTH);
+
+        ImageIcon bgIcon = new ImageIcon(dimg);
+
+        bkPagesBg.setIcon(bgIcon);
+    }
+
     /**
      *
      * @param panelNum the scene the object should be rendered on
@@ -100,7 +142,7 @@ public class ScenesUI {
      * @param clickAction determines what to do if the object is clicked
      */
     public void renderObject(int panelNum, int posX, int posY, int width, int height,
-                             String fileName, String objectText, String clickAction) {
+                             String fileName, String objectText, String clickAction, Boolean inMain) {
         // create objects as labels (so they can be clicked)
         JLabel objLabel = new JLabel();
         objLabel.setBounds(posX, posY, width, height); //  ensure object appears in particular spot
@@ -119,13 +161,9 @@ public class ScenesUI {
 
         ImageIcon objIcon = new ImageIcon(dimg);
 
-//        ImageIcon objIcon = new ImageIcon(getClass().getClassLoader().getResource(fileName));
-
         objLabel.setIcon(objIcon); // use the loaded sprite image
 
         objLabel.addMouseListener(new MouseListener() {
-            // only need do something if user hovers over, stops hovering over or clicks object
-
             public void mouseClicked(MouseEvent e) { }
             public void mousePressed(MouseEvent e) {
                 // on left mouse click
@@ -141,7 +179,14 @@ public class ScenesUI {
 
         objLabel.setToolTipText(objectText);
 
-        panels[panelNum].add(objLabel);
+        if (inMain){
+            // render it in main page
+            panels[panelNum].add(objLabel);
+        } else {
+            // render it in the book
+            bkPgPanels[panelNum].add(objLabel);
+        }
+
 
     }
 
@@ -150,19 +195,19 @@ public class ScenesUI {
         renderBg(0, "src/main/resources/images/roomAssets/roomBg.png");
 
         renderObject(0, 590, 400,110,90,
-                "src/main/resources/images/roomAssets/chest.png", "storage", "storage");
+                "src/main/resources/images/roomAssets/chest.png", "storage", "storage", true);
         renderObject(0, 130, 210,180,120,
-                "src/main/resources/images/roomAssets/bed.png", "rest", "rest");
+                "src/main/resources/images/roomAssets/bed.png", "rest", "rest", true);
         renderObject(0, 450, 210,180,120,
-                "src/main/resources/images/roomAssets/learningDesk.png", "guidebook", "guidebook");
+                "src/main/resources/images/roomAssets/learningDesk.png", "guidebook", "guidebook", true);
         renderObject(0, 150, 340,60,40,
-                "src/main/resources/images/roomAssets/saveBook.png", "journal", "journal");
+                "src/main/resources/images/roomAssets/saveBook.png", "journal", "journal", true);
         renderObject(0, 250, 60,200,150,
-                "src/main/resources/images/roomAssets/window.png", "go out", "go out");
+                "src/main/resources/images/roomAssets/window.png", "go out", "go out", true);
         renderObject(0, 210, 350,75,90,
-                "src/main/resources/images/roomAssets/bag.png", "inventory", "inventory");
+                "src/main/resources/images/roomAssets/bag.png", "inventory", "inventory", true);
         renderObject(0, 40, 390,100,100,
-                "src/main/resources/images/roomAssets/combatGear.png", "armour", "armour");
+                "src/main/resources/images/roomAssets/combatGear.png", "armour", "armour", true);
 
         panels[0].add(backgrounds[0]);
     }
@@ -171,15 +216,15 @@ public class ScenesUI {
         renderBg(1, "src/main/resources/images/townAssets/townBg.png");
 
         renderObject(1, 520, 300,160,140,
-                "src/main/resources/images/townAssets/armourShop.png", "armoury", "armoury");
+                "src/main/resources/images/townAssets/armourShop.png", "armoury", "armoury", true);
         renderObject(1, 100, 160,160,140,
-                "src/main/resources/images/townAssets/weaponShop.png", "weapons", "weapons");
+                "src/main/resources/images/townAssets/weaponShop.png", "weapons", "weapons", true);
         renderObject(1, 300, 130,150,135,
-                "src/main/resources/images/townAssets/merchant.png", "merchant", "merchant");
+                "src/main/resources/images/townAssets/merchant.png", "merchant", "merchant", true);
         renderObject(1, 500, 60,220,140,
-                "src/main/resources/images/townAssets/forest.png", "explore paths", "paths");
+                "src/main/resources/images/townAssets/forest.png", "explore paths", "paths", true);
         renderObject(1, 30, 370,80,160,
-                "src/main/resources/images/townAssets/homeSign.png", "home", "home");
+                "src/main/resources/images/townAssets/homeSign.png", "home", "home", true);
         // todo: render the townsfolk to talk to
 
         panels[1].add(backgrounds[1]);
@@ -203,17 +248,57 @@ public class ScenesUI {
         renderBg(4, "src/main/resources/images/townAssets/townBg.png");
 
         renderObject(4, 520, 300,160,140,
-                "src/main/resources/images/townAssets/armourShop.png", "armour", "armour");
+                "src/main/resources/images/townAssets/armourShop.png", "armour", "armour", true);
         renderObject(4, 100, 160,160,140,
-                "src/main/resources/images/townAssets/weaponShop.png", "weapons", "weapons");
+                "src/main/resources/images/townAssets/weaponShop.png", "weapons", "weapons", true);
         renderObject(4, 300, 130,150,135,
-                "src/main/resources/images/townAssets/merchant.png", "merchant", "merchant");
+                "src/main/resources/images/townAssets/merchant.png", "merchant", "merchant", true);
         renderObject(4, 30, 370,80,160,
-                "src/main/resources/images/townAssets/homeSign.png", "home", "home");
+                "src/main/resources/images/townAssets/homeSign.png", "home", "home", true);
         // todo: render the townsfolk to talk to
 
         panels[4].add(backgrounds[4]);
     }
+
+    public void createBkPg0() {
+        renderBookBg(0);
+
+        renderObject(0, 520, 300,160,140,
+                "src/main/resources/images/townAssets/armourShop.png", "armour", "toPg1", false);
+        renderObject(0, 100, 160,160,140,
+                "src/main/resources/images/townAssets/weaponShop.png", "weapons", "weapons", false);
+        renderObject(0, 300, 130,150,135,
+                "src/main/resources/images/townAssets/merchant.png", "merchant", "merchant", false);
+
+        bkPgPanels[0].add(bkPagesBg);
+    }
+
+    public void createBkPg1() {
+        renderBookBg(1);
+
+        renderObject(1, 520, 300,160,140,
+                "src/main/resources/images/townAssets/armourShop.png", "armour", "toPg0", false);
+        renderObject(1, 100, 160,160,140,
+                "src/main/resources/images/townAssets/weaponShop.png", "weapons", "toPg2", false);
+        renderObject(1, 300, 130,150,135,
+                "src/main/resources/images/townAssets/merchant.png", "merchant", "merchant", false);
+
+        bkPgPanels[1].add(bkPagesBg);
+    }
+
+    public void createBkPg2() {
+        renderBookBg(2);
+
+        renderObject(2, 520, 300,160,140,
+                "src/main/resources/images/townAssets/armourShop.png", "armour", "toPg1", false);
+        renderObject(2, 100, 160,160,140,
+                "src/main/resources/images/townAssets/weaponShop.png", "weapons", "weapons", false);
+        renderObject(2, 300, 130,150,135,
+                "src/main/resources/images/townAssets/merchant.png", "merchant", "merchant", false);
+
+        bkPgPanels[2].add(bkPagesBg);
+    }
+
 
 
 
