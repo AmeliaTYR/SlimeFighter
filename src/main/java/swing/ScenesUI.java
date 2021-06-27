@@ -190,7 +190,9 @@ public class ScenesUI {
 
     }
 
-
+    /**
+     * Render in the objects in the home as well as the background
+     */
     public void createHomeScene() {
         renderBg(0, "src/main/resources/images/roomAssets/roomBg.png");
 
@@ -212,6 +214,9 @@ public class ScenesUI {
         panels[0].add(backgrounds[0]);
     }
 
+    /**
+     * Create the objects in the town and add the background to the scene
+     */
     public void createTownScene() {
         renderBg(1, "src/main/resources/images/townAssets/townBg.png");
 
@@ -230,6 +235,9 @@ public class ScenesUI {
         panels[1].add(backgrounds[1]);
     }
 
+    /**
+     * Create the scene where the player is moving across a forest on screen
+     */
     public void createTravellingScene() {
         panels[3] = new TravellingUI();
         frame.add(panels[3]);
@@ -238,7 +246,7 @@ public class ScenesUI {
     /** create an array of panels for the different scenes
      *  panels[]
      *  [0]home, [1]town, [2], [3]travelling,
-     *  [4]combat, [5]loot, [6]inventory, [7]conversation,
+     *  [4]combat, [5]loot, [6]conversation,
      *
      *  bookPanels[]
      *  book pages now as their own separate window!!!
@@ -260,6 +268,9 @@ public class ScenesUI {
         panels[4].add(backgrounds[4]);
     }
 
+    /**
+     * Create the first of the stats book pages (also the access point for saving if not travelling)
+     */
     public void createBkPg0() {
         renderBookBg(0);
 
@@ -273,6 +284,9 @@ public class ScenesUI {
         bkPgPanels[0].add(bkPagesBg);
     }
 
+    /**
+     * Create second of the stats book pages
+     */
     public void createBkPg1() {
         renderBookBg(1);
 
@@ -286,6 +300,9 @@ public class ScenesUI {
         bkPgPanels[1].add(bkPagesBg);
     }
 
+    /**
+     * Create the third of the stats book pages
+     */
     public void createBkPg2() {
         renderBookBg(2);
 
